@@ -1,0 +1,12 @@
+{
+    "Path": {
+        "FromDirectory": "./ui/",
+        "ToDirectory": "./ui/"
+    },
+    "Files": [
+        {
+            "From": "mainwindow.ui",
+            "To": "mainwindow.py"
+        }
+    ]
+}

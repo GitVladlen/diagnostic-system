@@ -1,5 +1,9 @@
 import xlrd
 import math
+import sys
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+from ui.mainwindow import Ui_MainWindow
 
 
 # =======================================================================
@@ -123,12 +127,12 @@ class Application(object):
         pass
 
     def run(self):
-        sh = self.load_data("6  клапаны.xls", "Лист4")
+        sh = self.load_data("./test-data/6  клапаны.xls", "Лист4")
 
         if sh is None:
             return
 
-        da_sh = self.load_data("da_data.xlsx", "Sheet1")
+        da_sh = self.load_data("./test-data/da_data.xlsx", "Sheet1")
 
         if da_sh is None:
             return
@@ -137,9 +141,18 @@ class Application(object):
         pass
     pass
 
+
 # =======================================================================
-if __name__ == "__main__":
-    app = Application()
-    app.run()
-    pass
+if __name__ == '__main__':
+    # app = Application()
+    # app.run()
+
+    app = QtWidgets.QApplication(sys.argv)
+
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+
+    sys.exit(app.exec_())
 # =======================================================================
