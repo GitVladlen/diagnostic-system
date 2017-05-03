@@ -143,16 +143,35 @@ class Application(object):
 
 
 # =======================================================================
+
+class StartWindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        # Set up the user interface from Designer
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+        # Connect up the buttons
+        self.ui.btn_open.clicked.connect(self.status_msg)
+        self.ui.btn_calc.clicked.connect(self.status_msg)
+
+    def status_msg(self):
+        sender = self.sender()
+        self.ui.statusbar.showMessage(sender.text() + ' was pressed')
+
 if __name__ == '__main__':
     # app = Application()
     # app.run()
 
     app = QtWidgets.QApplication(sys.argv)
 
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    # MainWindow = QtWidgets.QMainWindow()
+    # ui = Ui_MainWindow()
+    # ui.setupUi(MainWindow)
+    # MainWindow.show()
+    window = StartWindow()
+    window.show()
 
     sys.exit(app.exec_())
 # =======================================================================
